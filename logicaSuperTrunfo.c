@@ -5,6 +5,7 @@
 
 // Comparar cartas dos paises usando dois atributos escolhidos pelo jogador;
 // O jogador com maior numero dos atributos (densidade é invertido);
+// Correção na descrição
 
 int main() {
     int resultado1, resultado2;
