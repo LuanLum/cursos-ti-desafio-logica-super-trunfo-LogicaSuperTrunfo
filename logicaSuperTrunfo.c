@@ -1,43 +1,104 @@
 #include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
 
-// Desafio Super Trunfo - Países
-// Tema 2 - Comparação das Cartas
-// Este código inicial serve como base para o desenvolvimento do sistema de comparação de cartas de cidades. 
-// Siga os comentários para implementar cada parte do desafio.
+// Comparar cartas dos paises usando dois atributos escolhidos pelo jogador;
+// O jogador com maior numero dos atributos (densidade é invertido);
 
 int main() {
-    // Definição das variáveis para armazenar as propriedades das cidades
-    // Você pode utilizar o código do primeiro desafio
+    int resultado1, resultado2;
+    char primeiroAtributo, segundoAtributo;
+    int ataque1, ataque2, defesa1, defesa2, recuo1, recuo2;
 
+    // Gerar número aleatório
+    srand(time(0));
+    ataque1 = 1;// rand() % 100 + 1; // Numero entre 1 e 100
+    ataque2 = 0;// rand() % 100 + 1; // Numero entre 1 e 100
+    defesa1 = 1;// rand() % 100 + 1; // Numero entre 1 e 100
+    defesa2 = 0;// rand() % 100 + 1; // Numero entre 1 e 100
+    recuo1 = 0;// rand() % 100 + 1; // Numero entre 1 e 100
+    recuo2 = 1;// rand() % 100 + 1; // Numero entre 1 e 100
     
-    // Cadastro das Cartas:
-    // Implemente a lógica para solicitar ao usuário que insira os dados das cidades
-    // utilizando a função scanf para capturar as entradas.
-    // utilize o código do primeiro desafio
+    // Início do jogo
+    printf("Bem-vindo ao jogo!\n");
+    printf("Escolha o primeiro atributo.\n");
+    printf("A. Ataque\n");
+    printf("D. Defesa\n");
+    printf("R. Recuo\n");
 
-    // Exemplo:
-    // printf("Digite o código da cidade: ");
-    // scanf("%s", codigo);
-    // 
-    // (Repita para cada propriedade)
+    printf("Escolha a comparação: ");
+    scanf(" %c", &primeiroAtributo);
 
-    // Comparação de Cartas:
-    // Desenvolva a lógica de comparação entre duas cartas.
-    // Utilize estruturas de decisão como if, if-else para comparar atributos como população, área, PIB, etc.
+    switch (primeiroAtributo)
+    {
+    case 'A':
+    case 'a':
+    printf("Você escolheu a opção: Ataque\n");
+    resultado1 = ataque1 > ataque2 ? 1 : 0;
+        break;
 
-    // Exemplo:
-    // if (populacaoA > populacaoB) {
-    //     printf("Cidade 1 tem maior população.\n");
-    // } else {
-    //     printf("Cidade 2 tem maior população.\n");
-    // }
+    case 'D':
+    case 'd':
+    printf("Você escolheu a opção: Defesa\n");
+    resultado1 = defesa1 > defesa2 ? 1 : 0;
+        break;    
+    
+    case 'R':
+    case 'r':
+    printf("Você escolheu a opção: Recuo\n");
+    resultado1 = recuo1 > recuo2 ? 1 : 0;    
+        break;    
 
-    // Exibição dos Resultados:
-    // Após realizar as comparações, exiba os resultados para o usuário.
-    // Certifique-se de que o sistema mostre claramente qual carta venceu e com base em qual atributo.
+    default:
+    printf("Opção inválida!\n");
+        break;
+    }
 
-    // Exemplo:
-    // printf("A cidade vencedora é: %s\n", cidadeVencedora);
+    // Parte 2
+    printf("Segundo Embate!\n");
+    printf("Escolha o segundo atributo.\n");
+    printf("A. Ataque\n");
+    printf("D. Defesa\n");
+    printf("R. Recuo\n");
+
+    printf("Escolha a comparação: ");
+    scanf(" %c", &segundoAtributo);
+
+    if (primeiroAtributo == segundoAtributo) {printf("Você escolheu o mesmo atributo!\n");} else {
+        switch (segundoAtributo)
+        {
+        case 'A':
+        case 'a':
+        printf("Você escolheu a opção: Ataque\n");
+        resultado2 = ataque1 > ataque2 ? 1 : 0;
+            break;
+
+        case 'D':
+        case 'd':
+        printf("Você escolheu a opção: Defesa\n");
+        resultado2 = defesa1 > defesa2 ? 1 : 0;
+            break;    
+        
+        case 'R':
+        case 'r':
+        printf("Você escolheu a opção: Recuo\n");
+        resultado2 = recuo1 > recuo2 ? 1 : 0;    
+            break;    
+
+        default:
+        printf("Opção inválida!\n");
+            break;
+        }
+
+        if (resultado1 && resultado2) {
+            printf("Você ganhou!\n");
+        } else if ( resultado1 != resultado2) {
+            printf("Você empatou!\n");
+        } else {
+            printf("Você perdeu!\n");
+        }
+    }
 
     return 0;
 }
